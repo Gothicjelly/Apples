@@ -1,0 +1,55 @@
+
+
+<!DOCTYPE html>
+<html lang="da">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Saml æbler</title>
+
+  <!-- CSS -->
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+  <div class="game">
+
+    <div class="hud">
+      <div class="stat">🍎 Samlet: <span id="score">0</span></div>
+      <div class="stat">⏱️ Tid: <span id="time">30</span>s</div>
+      <div class="stat">❌ Misses: <span id="miss">0</span>/5</div>
+      <button id="startBtn">Start spil</button>
+    </div>
+
+    <div class="scene" id="scene">
+
+      <!-- Træer -->
+      <div class="tree" style="left: 80px;">
+        <div class="trunk"></div>
+        <div class="crown"></div>
+      </div>
+
+      <div class="tree" style="left: 340px;">
+        <div class="trunk"></div>
+        <div class="crown"></div>
+      </div>
+
+      <div class="tree" style="left: 600px;">
+        <div class="trunk"></div>
+        <div class="crown"></div>
+      </div>
+
+      <!-- Kurv -->
+      <div class="basket"></div>
+    </div>
+
+    <div class="overlay">
+      <div class="banner" id="banner">Klik på æblerne!</div>
+    </div>
+
+  </div>
+
+  <!-- JS -->
+  <script src="script.js"></script>
+</body>
+</html>

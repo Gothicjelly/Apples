@@ -1,0 +1,165 @@
+:root {
+  --bg: #c9f0ff;
+  --grass: #71c563;
+  --tree-bark: #7b4b2a;
+  --tree-leaves: #2da34f;
+  --apple: #e53935;
+  --apple-dark: #b71c1c;
+  --ui: #1a1a1a;
+  --white: #ffffff;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: system-ui, sans-serif;
+  background: linear-gradient(#aee7ff, var(--bg)) no-repeat;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.game {
+  width: 900px;
+  max-width: 95vw;
+  height: 600px;
+  max-height: 90vh;
+  background: var(--white);
+  border-radius: 16px;
+  box-shadow: 0 10px 30px rgba(0,0,0,.1);
+  overflow: hidden;
+  position: relative;
+}
+
+/* HUD */
+.hud {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 56px;
+  background: rgba(255,255,255,0.65);
+  border-bottom: 1px solid rgba(0,0,0,0.08);
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  padding: 0 16px;
+  z-index: 10;
+}
+
+.hud .stat {
+  font-weight: 600;
+}
+
+.hud button {
+  margin-left: auto;
+  padding: 8px 14px;
+  border: none;
+  border-radius: 10px;
+  background: #2563eb;
+  color: #fff;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+/* Scene */
+.scene {
+  position: absolute;
+  inset: 56px 0 0 0;
+  background:
+    linear-gradient(to top, var(--grass) 120px, transparent 0),
+    linear-gradient(180deg, #e8faff, #f9feff 50%);
+}
+
+/* Træ */
+.tree {
+  position: absolute;
+  bottom: 120px;
+  width: 180px;
+  height: 260px;
+}
+
+.trunk {
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 32px;
+  height: 140px;
+  background: var(--tree-bark);
+  border-radius: 12px;
+}
+
+.crown {
+  position: absolute;
+  bottom: 110px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 180px;
+  height: 140px;
+  background: var(--tree-leaves);
+  border-radius: 90px;
+}
+
+/* Æbler */
+.apple {
+  position: absolute;
+  width: 26px;
+  height: 26px;
+  background: radial-gradient(circle at 30% 30%, #ff8a80, var(--apple));
+  border-radius: 50%;
+  cursor: pointer;
+  z-index: 10;            /* ← FIX: æbler foran alt */
+}
+
+.apple::after {
+  content: "";
+  position: absolute;
+  top: -6px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 8px;
+  height: 10px;
+  background: var(--apple-dark);
+  border-radius: 2px;
+}
+
+/* Kurv */
+.basket {
+  position: absolute;
+  bottom: 80px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 140px;
+  height: 70px;
+  background: #c28b52;
+  border-radius: 12px 12px 40px 40px;
+}
+
+/* Overlay */
+.overlay {
+  position: absolute;
+  inset: 56px 0 0 0;
+  display: grid;
+  place-items: center;
+  pointer-events: none;   /* ← FIX: må ikke blokere klik */
+}
+
+.banner {
+  background: rgba(0,0,0,0.75);
+  color: #fff;
+  padding: 14px 18px;
+  border-radius: 10px;
+  font-weight: 700;
+  opacity: 0;
+  transition: all .25s ease;
+  pointer-events: none;   /* ← FIX */
+}
+
+.banner.show {
+  opacity: 1;
+}
